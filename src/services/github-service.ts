@@ -2,12 +2,11 @@ import axios from "axios";
 
 import ResponseType from "types/Response.type";
 import UserDetailsType from "../types/UserDetails.type";
+import UserReposType from "../types/UserRepos.type";
 
 const BASE_URL = "https://api.github.com";
 
-const getRequest = async (
-  uri: string
-): Promise<ResponseType<UserDetailsType>> => {
+async function getRequest<T>(uri: string): Promise<ResponseType<T>> {
   try {
     const result = await axios.get(`${BASE_URL}/${uri}`);
     return {
@@ -21,13 +20,14 @@ const getRequest = async (
       error: err?.message || "Internal error",
     };
   }
-};
+}
 
 export const getUserDetails = async (
   username: string
-): Promise<ResponseType<UserDetailsType>> => getRequest(`users/${username}`);
+): Promise<ResponseType<UserDetailsType>> =>
+  getRequest<UserDetailsType>(`users/${username}`);
 
 export const getUserRepos = async (
   username: string
-): Promise<ResponseType<UserDetailsType>> =>
-  getRequest(`users/${username}/repos`);
+): Promise<ResponseType<UserReposType>> =>
+  getRequest<UserReposType>(`users/${username}/repos`);

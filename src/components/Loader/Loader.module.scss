@@ -1,0 +1,16 @@
+@import "src/styles/variables";
+
+.Container {
+  height: 100%;
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > span {
+    > span:nth-child(1),
+    > span:nth-child(2) {
+      background-color: $color-primary;
+    }
+  }
+}

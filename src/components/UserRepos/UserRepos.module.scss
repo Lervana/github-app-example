@@ -1,0 +1,30 @@
+@import "src/styles/variables";
+
+.Container {
+  background-color: $color-background-light;
+  margin-top: $spacer-5;
+}
+
+.Link {
+  background: $color-background-light;
+  box-shadow: $shadow-link-container;
+  border-radius: 12px;
+  margin: 1rem 0;
+  overflow: hidden;
+
+  a {
+    color: $color-secondary;
+    text-decoration: none;
+    font-size: .875rem;
+    line-height: 1rem;
+    letter-spacing: 0.4px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding: $spacer-3;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

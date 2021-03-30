@@ -6,13 +6,16 @@ import Button from "../Button";
 
 interface SearchBarProps {
   onSearch: (value: string) => void;
+  onChange: (value: string) => void;
 }
 
-const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
+const SearchBar: FC<SearchBarProps> = ({ onSearch, onChange }) => {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
-  const onInputChange = (event: ChangeEvent<HTMLInputElement>) =>
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onChange(event.target.value);
     setInputValue(event.target.value);
+  };
 
   return (
     <div className={styles.Container}>

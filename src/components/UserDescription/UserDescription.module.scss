@@ -1,0 +1,33 @@
+@import "src/styles/variables";
+
+.Container {
+  display: flex;
+  flex-direction: column;
+}
+
+.Header {
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+
+  div:first-child {
+    margin-right: $spacer-3;
+  }
+}
+
+.Avatar {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 12px;
+}
+
+.Description {
+  margin-top: $spacer-3;
+  font-style: normal;
+  font-weight: normal;
+  font-size: .875rem;
+  line-height: 1.2rem;
+  letter-spacing: 0.4px;
+  color: $color-text-info;
+  max-width: 17.4rem;
+}

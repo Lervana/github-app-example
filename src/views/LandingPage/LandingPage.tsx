@@ -4,12 +4,13 @@ import SearchBar from "components/SearchBar";
 import UserDetails from "components/UserDetails";
 import { getUserDetails, getUserRepos } from "services/github-service";
 import ResponseType from "types/Response.type";
+import UserDetailsType from "types/UserDetails.type";
 
 const LandingPage: FC = () => {
-  const [
-    userDetailsResponse,
-    setUserDetailsResponse,
-  ] = useState<ResponseType>();
+  const [username, setUsername] = useState<string>();
+  const [userDetailsResponse, setUserDetailsResponse] = useState<
+    ResponseType<UserDetailsType>
+  >();
 
   const onSearch = async (value: string) => {
     const result = await getUserDetails(value);
@@ -22,8 +23,11 @@ const LandingPage: FC = () => {
 
   return (
     <div>
-      <SearchBar onSearch={onSearch} />
-      <UserDetails userDetailsResponse={userDetailsResponse} />
+      <SearchBar onSearch={onSearch} onChange={setUsername} />
+      <UserDetails
+        username={username}
+        userDetailsResponse={userDetailsResponse}
+      />
     </div>
   );
 };

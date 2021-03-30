@@ -1,9 +1,8 @@
-import UserDetailsResponseType from "./UserDetailsResponse.type";
 import { AxiosResponse } from "axios";
 
-type ResponseType = {
+type ResponseType<T> = {
   status: number;
-  response?: AxiosResponse<UserDetailsResponseType>;
+  response?: AxiosResponse<T>;
   error?: string;
 };
 

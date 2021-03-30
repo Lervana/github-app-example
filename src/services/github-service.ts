@@ -1,10 +1,13 @@
 import axios from "axios";
 
 import ResponseType from "types/Response.type";
+import UserDetailsType from "../types/UserDetails.type";
 
 const BASE_URL = "https://api.github.com";
 
-const getRequest = async (uri: string): Promise<ResponseType> => {
+const getRequest = async (
+  uri: string
+): Promise<ResponseType<UserDetailsType>> => {
   try {
     const result = await axios.get(`${BASE_URL}/${uri}`);
     return {
@@ -20,8 +23,11 @@ const getRequest = async (uri: string): Promise<ResponseType> => {
   }
 };
 
-export const getUserDetails = async (username: string): Promise<ResponseType> =>
-  getRequest(`users/${username}`);
+export const getUserDetails = async (
+  username: string
+): Promise<ResponseType<UserDetailsType>> => getRequest(`users/${username}`);
 
-export const getUserRepos = async (username: string): Promise<ResponseType> =>
+export const getUserRepos = async (
+  username: string
+): Promise<ResponseType<UserDetailsType>> =>
   getRequest(`users/${username}/repos`);

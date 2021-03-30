@@ -2,17 +2,27 @@ import React, { FC, Fragment } from "react";
 
 import Info from "components/Info";
 import ResponseType from "types/Response.type";
+import UserDetailsType from "types/UserDetails.type";
 import styles from "./UserDetails.module.scss";
+import UserDescription from "../UserDescription";
 
 const getContent = (
+  username: string | undefined,
   status: number,
-  userDetailsResponse: ResponseType | undefined
+  userDetailsResponse: ResponseType<UserDetailsType> | undefined
 ) => {
   switch (status) {
     case -1:
       return <Info text="No content" />;
     case 200:
-      return <Fragment>123</Fragment>;
+      return (
+        <Fragment>
+          <UserDescription
+            username={username}
+            userDetails={userDetailsResponse?.response?.data}
+          />
+        </Fragment>
+      );
     case 404:
       return <Info text="User not found" />;
     default: {
@@ -24,14 +34,18 @@ const getContent = (
 };
 
 interface UserDetailsProps {
-  userDetailsResponse: ResponseType | undefined;
+  username: string | undefined;
+  userDetailsResponse: ResponseType<UserDetailsType> | undefined;
 }
 
-const UserDetails: FC<UserDetailsProps> = ({ userDetailsResponse }) => {
+const UserDetails: FC<UserDetailsProps> = ({
+  username,
+  userDetailsResponse,
+}) => {
   const status = !userDetailsResponse ? -1 : userDetailsResponse.status;
   return (
     <div className={styles.Container}>
-      {getContent(status, userDetailsResponse)}
+      {getContent(username, status, userDetailsResponse)}
     </div>
   );
 };

@@ -8,15 +8,13 @@ import "styles/index.scss";
 
 function App() {
   return (
-    <div className="App">
-      <Router history={history}>
-        <Switch>
-          <Route path="/">
-            <LandingPage />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+    <Router history={history}>
+      <Switch>
+        <Route path="/">
+          <LandingPage />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

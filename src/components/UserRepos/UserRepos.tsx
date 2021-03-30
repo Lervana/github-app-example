@@ -34,18 +34,24 @@ const getContent = (
   userReposResponse: ResponseType<UserReposResponse> | undefined
 ) => {
   if (userReposResponse?.status !== 200)
-    return <Info text={`Unable to get repositories for user ${username}`} />;
+    return (
+      <div className={styles.InfoWrapper}>
+        <Info text={`Unable to get repositories for user ${username}`} />
+      </div>
+    );
 
   const filteredRepos = getFilteredRepos(userReposResponse, username);
 
   if (filteredRepos.length === 0)
     return (
-      <Info text={`User ${username} don't have any popular repositories`} />
+      <div className={styles.InfoWrapper}>
+        <Info text={`User ${username} don't have any popular repositories`} />
+      </div>
     );
 
   return filteredRepos.map(({ html_url, name }, index) => (
-    <div className={styles.Link}>
-      <a href={html_url} target="_blank" key={`repo-${index}`}>
+    <div className={styles.Link} key={`repo-${index}`}>
+      <a href={html_url} target="_blank" rel="noreferrer">
         {name}
       </a>
     </div>
@@ -59,19 +65,6 @@ const UserRepos: FC<UserReposProps> = ({ username, userReposResponse }) => {
       {getContent(username, userReposResponse)}
     </div>
   );
-
-  // return (
-  //
-  //
-  //     {getFilteredRepos(userReposResponse?.response?.data).map(({ html_url, name }, index) => (
-  //
-  //
-  //
-  //
-  //
-  //     ))}
-  //   </div>
-  // );
 };
 
 export default UserRepos;

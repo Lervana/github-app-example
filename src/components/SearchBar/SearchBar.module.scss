@@ -6,6 +6,8 @@
   align-items: flex-start;
   background-color: $color-background-light;
   box-shadow: $shadow-default;
+  position: relative;
+  z-index: 10;
 }
 
 .Field {

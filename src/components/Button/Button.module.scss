@@ -1,0 +1,19 @@
+@import "src/styles/variables";
+
+.Container {
+  border: none;
+  border-radius: $border-radius;
+  background-color: $color-primary;
+  color: $color-text-light;
+  font-size: .75rem;
+  line-height: .75rem;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  padding: .75rem;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: $shadow-action;
+  }
+}

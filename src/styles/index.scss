@@ -15,7 +15,8 @@ body,
 }
 
 body {
+  font-size: $base-font-size;
   font-family: 'Roboto', sans-serif;
-  color: $col-text;
-  background-color: $col-background;
+  color: $color-text;
+  background-color: $color-background;
 }

@@ -1,2 +1,25 @@
-$col-text: #353535;
-$col-background: #dfdfdf;
+$base-font-size: 16px;
+$border-radius: 8px;
+
+$color-text: #353535;
+$color-text-light: #ffffff;
+$color-background: #dfdfdf;
+$color-background-light: #ffffff;
+$color-input-background: #f0f3f4;
+$color-primary: #452cdc;
+$color-secondary: #2f80ed;
+
+$spacer: $base-font-size;
+$spacer-1: $spacer / 4;   //4px;
+$spacer-2: $spacer / 2;   //8px
+$spacer-3: $spacer;       //16px
+$spacer-4: $spacer * 1.5; //24px
+$spacer-5: $spacer * 2;   //32px
+$spacer-6: $spacer * 3;   //48px
+$spacer-7: $spacer * 4;   //64px
+$spacer-8: $spacer * 5;   //80px
+$spacer-9: $spacer * 6;   //96px
+$spacer-10: $spacer * 7;  //112px
+
+$shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.1);
+$shadow-action: 3px 3px 3px 0 rgba(0, 0, 0, 0.2);

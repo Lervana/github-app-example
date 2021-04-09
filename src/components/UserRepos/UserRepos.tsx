@@ -34,24 +34,20 @@ const getContent = (
   userReposResponse: ResponseType<UserReposResponse> | undefined
 ) => {
   if (userReposResponse?.status !== 200)
-    return (
-      <div className={styles.InfoWrapper}>
-        <Info text={`Unable to get repositories for user ${username}`} />
-      </div>
-    );
+    return <Info text={`Unable to get repositories for user ${username}`} />;
 
   const filteredRepos = getFilteredRepos(userReposResponse, username);
 
   if (filteredRepos.length === 0)
     return (
-      <div className={styles.InfoWrapper}>
+      <div className={styles.NoReposInfo}>
         <Info text={`User ${username} don't have any popular repositories`} />
       </div>
     );
 
   return filteredRepos.map(({ html_url, name }, index) => (
-    <div className={styles.Link} key={`repo-${index}`}>
-      <a href={html_url} target="_blank" rel="noreferrer">
+    <div className={styles.Link}>
+      <a href={html_url} target="_blank" key={`repo-${index}`}>
         {name}
       </a>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-// import reportWebVitals from "utils/reportWebVitals";
+import reportWebVitals from "utils/reportWebVitals";
 
 import "styles/index.scss";
 

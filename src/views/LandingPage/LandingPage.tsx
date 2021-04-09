@@ -1,4 +1,5 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
+import { debounce } from "ts-debounce";
 
 import SearchBar from "components/SearchBar";
 import { getUserDetails, getUserRepos } from "services/github-service";
@@ -32,10 +33,20 @@ const LandingPage: FC = () => {
     setIsFetching(false);
   };
 
+  const debouncedOnChange = debounce((username: string) => {
+    setUsername(username);
+    onSearch(username);
+  }, 400);
+
+  useEffect(() => () => debouncedOnChange.cancel(), []);
+
   return (
     <div className={styles.Container}>
       <div className={styles.Content}>
-        <SearchBar onSearch={onSearch} onChange={setUsername} />
+        <SearchBar
+          onSearch={onSearch}
+          onChange={(username) => debouncedOnChange(username)}
+        />
         <Content
           username={username}
           userDetailsResponse={userDetailsResponse}
